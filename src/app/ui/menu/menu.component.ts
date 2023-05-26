@@ -8,4 +8,8 @@ import { Menu } from './model';
 })
 export class MenuComponent {
   @Input('menu') menu: Menu[] = [];
+
+  public cleanUrl = (url: string) => {
+    return url.startsWith('page/') ? url.replace('page/', '/') : url;
+  };
 }

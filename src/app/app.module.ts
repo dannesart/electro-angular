@@ -5,11 +5,13 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     UiModule,
     provideFirebaseApp(() =>

@@ -6,7 +6,9 @@ import {
   Firestore,
   docData,
 } from '@angular/fire/firestore';
+import { Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { DefaultMeta } from './consts/metas';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +16,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'electro';
-  users$: Observable<any[]>;
   menu$: Observable<any>;
   firestore: Firestore = inject(Firestore);
 
-  constructor() {
+  constructor(public metaTagService: Meta) {
     const menuDoc = doc(this.firestore, '/data/new-model-menu/items/main');
-    const usersCollection = collection(this.firestore, 'users');
     this.menu$ = docData(menuDoc);
-    this.users$ = collectionData(usersCollection);
+
+    metaTagService.addTags(
+      Object.keys(DefaultMeta).map((key: string, idx) => {
+        return {
+          name: key,
+          content: DefaultMeta[key],
+        };
+      })
+    );
   }
 }
