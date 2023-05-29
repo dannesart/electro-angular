@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiModule } from './ui/ui.module';
 import { RouterModule } from '@angular/router';
+import { MenuUiModule } from './ui/menu/menu-ui.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +16,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    UiModule,
+    MenuUiModule,
     provideFirebaseApp(() =>
       initializeApp({
         apiKey: 'AIzaSyDP4u0xemmWPG-cAfzy5SXI2gk-9a0VMrg',
@@ -26,7 +29,7 @@ import { RouterModule } from '@angular/router';
     ),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

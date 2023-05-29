@@ -1,19 +1,13 @@
-<header class="p-10 bg-gray-200">
+<header class="p-8 flex justify-between">
   <a [routerLink]="['/']">
-    <img
-      height="59"
-      class="hidden md:block"
-      src="/assets/images/ee_logo_2015.png"
-    />
-    <img
-      height="59"
-      class="md:hidden"
-      src="/assets/images/mobile_ee_logo_2015.png"
-    />
+    <img class="hidden md:block h-14" src="/assets/images/ee_logo_2015.png" />
+    <img class="md:hidden h-14" src="/assets/images/mobile_ee_logo_2015.png" />
   </a>
   <ng-container *ngIf="menu$ | async as menu">
     <ui-menu [menu]="menu.value"></ui-menu>
   </ng-container>
 </header>
 
-<router-outlet></router-outlet>
+<main class="p-8 flex flex-col gap-8">
+  <router-outlet></router-outlet>
+</main>

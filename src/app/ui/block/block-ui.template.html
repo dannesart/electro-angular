@@ -1,0 +1,8 @@
+<ng-container *ngIf="block$ | async as block; else noResult">
+  <div style="height: {{block.height}}px">
+    <h1>{{block.title}}</h1>
+  </div>
+  {{ block | json}}
+</ng-container>
+
+<ng-template #noResult></ng-template>

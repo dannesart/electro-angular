@@ -3,6 +3,7 @@ import { Component, inject, NgModule } from '@angular/core';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { first, Observable } from 'rxjs';
+import { BlockUiModule } from 'src/app/ui/block/block-ui.module';
 /**
  * Component
  */
@@ -40,7 +41,7 @@ const routes: Routes = [
  * Module
  */
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), BlockUiModule],
   declarations: [HomeRoute],
   exports: [HomeRoute, RouterModule],
 })

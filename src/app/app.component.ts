@@ -1,14 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
-  collection,
   doc,
-  collectionData,
   Firestore,
   docData,
+  getDocFromCache,
 } from '@angular/fire/firestore';
-import { Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { DefaultMeta } from './consts/metas';
 
 @Component({
   selector: 'app-root',
@@ -17,19 +14,11 @@ import { DefaultMeta } from './consts/metas';
 })
 export class AppComponent {
   menu$: Observable<any>;
+  menuPromise$: any;
   firestore: Firestore = inject(Firestore);
 
-  constructor(public metaTagService: Meta) {
+  constructor() {
     const menuDoc = doc(this.firestore, '/data/new-model-menu/items/main');
     this.menu$ = docData(menuDoc);
-
-    metaTagService.addTags(
-      Object.keys(DefaultMeta).map((key: string, idx) => {
-        return {
-          name: key,
-          content: DefaultMeta[key],
-        };
-      })
-    );
   }
 }
