@@ -9,7 +9,7 @@
     "test": "ng test",
     "dev:ssr": "ng run electro:serve-ssr",
     "serve:ssr": "node dist/electro/server/main.js",
-    "build:ssr": "ng build && ng run electro:server",
+    "build:ssr": "ng run electro:server && ng build",
     "prerender": "ng run electro:prerender"
   },
   "private": true,
