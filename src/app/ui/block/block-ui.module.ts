@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { BehaviorSubject, first, Observable } from 'rxjs';
+import { ImageUiModule } from '../image/image-ui.module';
 /**
  * Component
  */
@@ -37,7 +38,7 @@ export class BlockUi implements OnInit, OnDestroy {
  * Module
  */
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, ImageUiModule],
   declarations: [BlockUi],
   exports: [BlockUi],
 })

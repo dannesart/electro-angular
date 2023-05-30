@@ -1,0 +1,9 @@
+<!-- <pre>
+    {{ image$ | async | json }}
+</pre> -->
+<ng-container *ngIf="image$ | async as image">
+  <img
+    [src]="image.main.fullDownloadablePath"
+    class="h-full w-full object-cover"
+  />
+</ng-container>

@@ -1,8 +1,19 @@
 <ng-container *ngIf="block$ | async as block; else noResult">
-  <div style="height: {{block.height}}px">
-    <h1>{{block.title}}</h1>
-  </div>
+  <ng-container [ngSwitch]="block.type">
+    <ng-container *ngSwitchCase="'new-model-hero'">
+      <div
+        style="height: {{block.height}}px"
+        class="rounded-3xl overflow-hidden"
+      >
+        <ui-image [imageNode]="block.background"></ui-image>
+        <h1>{{block.title}}</h1>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <pre>
   {{ block | json}}
+  </pre>
 </ng-container>
 
 <ng-template #noResult></ng-template>
