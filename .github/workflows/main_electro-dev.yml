@@ -24,7 +24,10 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
+          npm run build:ssr --if-present
+
+      - name: Rename file
+        run: mv dist/electro/main.js dist/electro/index.js
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
