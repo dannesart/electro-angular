@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node ./electro/index.js",
+    "build": "npm run build:ssr",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run electro:serve-ssr",
-    "serve:ssr": "node dist/electro/server/main.js",
+    "serve:ssr": "node dist/electro/main.js",
     "build:ssr": "ng run electro:server && ng build",
     "prerender": "ng run electro:prerender"
   },
